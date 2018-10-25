@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import Toggle from "../../../exampleRedux/components/Toggler";
 
-export default class Root extends React.Component {
+class Home extends React.Component {
     render() {
         return (
             <View style={styles.inCenter}>
-                <Text>New redux app v2</Text>
-                <Button title='Dispatch action' primary/>
+                <Text>New redux app v3</Text>
+                <Toggle/>
             </View>
         );
     }
@@ -19,3 +20,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+export default Home;
