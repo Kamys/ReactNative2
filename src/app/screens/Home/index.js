@@ -6,7 +6,7 @@ class Home extends React.Component {
     render() {
         return (
             <View style={styles.inCenter}>
-                <Text>New redux app v3</Text>
+                <Text>New redux app v4</Text>
                 <Toggle/>
             </View>
         );

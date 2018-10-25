@@ -3,7 +3,7 @@ import { AppLoading, Font } from "expo";
 
 export default class AssetsLoader extends React.Component {
     state = {
-        loading: false,
+        loading: true,
     }
 
     loadResourcesAsync = async () => {
@@ -19,7 +19,7 @@ export default class AssetsLoader extends React.Component {
     };
 
     handleFinishLoading = () => {
-        this.setState({ isLoadingComplete: true });
+        this.setState({ loading: false });
     };
 
     render() {

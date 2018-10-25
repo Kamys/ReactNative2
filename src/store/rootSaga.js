@@ -1,8 +1,9 @@
 import { all, fork } from 'redux-saga/effects';
+import pointers from '../pointers/saga';
 
 
 export default function* rootSaga() {
     yield all([
-        //...madalJuggler.map(fork),
+        pointers.map(fork),
     ]);
 }
