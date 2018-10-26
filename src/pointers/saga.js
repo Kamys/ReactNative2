@@ -11,6 +11,10 @@ function* selectPointer(action) {
         yield call(loadingSpecialty, action);
         return;
     }
+    if (payload.pointer.type === PointerType.SPECIALTIES) {
+        yield call(loadingCourses, action);
+        return;
+    }
 }
 
 function* startSelectPointer() {
@@ -47,6 +51,26 @@ function* loadingSpecialty(action) {
         params: {
             title: 'Specialty',
             items: specialties,
+        },
+    }
+    yield put(actions.selectPointer.success(payload));
+    yield call(NavigationService.navigate, navigateProps);
+}
+
+function* loadingCourses(action) {
+    const courses = yield call(api.getCourses, action.payload.pointer.id);
+    const type = PointerType.COURSES;
+    const payload = {
+        pointer: action.pointer,
+        type,
+        listPointer: courses,
+    }
+    const navigateProps = {
+        key: type,
+        routeName: 'SelectPointer',
+        params: {
+            title: 'Courses',
+            items: courses,
         },
     }
     yield put(actions.selectPointer.success(payload));
