@@ -12,14 +12,20 @@ class SelectPointer extends React.Component {
         title: null,
     }
 
+    onSelect = item => {
+        this.props.selectPointer({
+            pointer: item,
+        })
+    }
+
     render() {
-        const { title, items, selectPointer } = this.props;
+        const { title, items } = this.props;
 
         return (
             <Container>
                 <THeader title={title}/>
                 <Content>
-                    <ItemsList items={items} onSelectItem={selectPointer}/>
+                    <ItemsList items={items} onSelectItem={this.onSelect}/>
                 </Content>
             </Container>
         );
@@ -31,7 +37,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    selectPointer: () => dispatch(actions.selectPointer.request()),
+    selectPointer: payload => dispatch(actions.selectPointer.request(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectPointer);

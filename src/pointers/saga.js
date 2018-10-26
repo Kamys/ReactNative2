@@ -6,10 +6,9 @@ import { PointerType } from "./constants";
 import NavigationService from "../app/navigation/NavigationService";
 
 function* selectPointer(action) {
-    console.log('action: ', action);
     const { payload } = action;
     if (payload.pointer.type === PointerType.FACULTIES) {
-        yield call(loadingSpecialties, action);
+        yield call(loadingSpecialty, action);
         return;
     }
 }
@@ -29,10 +28,11 @@ function* startSelectPointer() {
     }
     yield put(actions.startSelectPointer.success(payload));
     yield call(NavigationService.navigate, navigateProps);
+    yield call(NavigationService.navigate, navigateProps);
 }
 
-function* loadingSpecialties(action) {
-    const specialties = yield call(api.getSpecialties, action.pointer.id);
+function* loadingSpecialty(action) {
+    const specialties = yield call(api.getSpecialty, action.payload.pointer.id);
     const payload = {
         pointer: action.pointer,
         type: PointerType.SPECIALTIES,
@@ -40,11 +40,13 @@ function* loadingSpecialties(action) {
     }
     const navigateProps = {
         routeName: 'SelectPointer',
-        title: 'Specialties',
-        items: specialties,
+        params: {
+            title: 'Specialty',
+            items: specialties,
+        },
     }
     yield put(actions.selectPointer.success(payload));
-    yield put(NavigationActions.navigate(navigateProps));
+    yield call(NavigationService.navigate, navigateProps);
 }
 
 function* watcher() {
@@ -54,4 +56,4 @@ function* watcher() {
     ]);
 }
 
-export default [watcher];
+export default watcher;

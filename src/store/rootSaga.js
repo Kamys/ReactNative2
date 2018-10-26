@@ -4,6 +4,6 @@ import pointers from '../pointers/saga';
 
 export default function* rootSaga() {
     yield all([
-        pointers.map(fork),
-    ]);
+        pointers,
+    ].map(fork));
 }
