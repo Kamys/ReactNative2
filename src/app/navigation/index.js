@@ -1,14 +1,24 @@
-import {
-    createStackNavigator,
-} from 'react-navigation';
-
-import Home from "../screens/Home";
-import SelectPointer from "../../pointers/SelectPointer";
 import React from "react";
+import NavigationService from "./NavigationService";
+import StackNavigator from "./StackNavigator";
 
-const StackNavigator = createStackNavigator({
-    Home: { screen: Home },
-    SelectPointer: { screen: props => <SelectPointer {...props.navigation.state.params}/> },
-});
 
-export default StackNavigator;
+
+class Navigation extends React.Component {
+
+    componentDidMount() {
+        NavigationService.setNavigator(this.navigator);
+    }
+
+    onInitNavigator = nav => {
+        this.navigator = nav;
+    }
+
+    render() {
+        return (
+            <StackNavigator ref={this.onInitNavigator}/>
+        );
+    }
+}
+
+export default Navigation;

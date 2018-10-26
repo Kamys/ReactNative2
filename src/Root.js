@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import AssetsLoader from "./app/components/AssetsLoader";
-import StackNavigator from "./app/navigation";
+import Navigation from "./app/navigation";
 
 export default class Root extends React.Component {
     render() {
@@ -12,7 +12,7 @@ export default class Root extends React.Component {
             <Provider store={store}>
                 <AssetsLoader>
                     <AssetsLoader>
-                        <StackNavigator/>
+                        <Navigation/>
                     </AssetsLoader>
                 </AssetsLoader>
             </Provider>

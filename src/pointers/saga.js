@@ -1,9 +1,9 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { NavigationActions } from 'react-navigation';
 
 import actions from "./actions";
 import api from "../api";
 import { PointerType } from "./constants";
+import NavigationService from "../app/navigation/NavigationService";
 
 function* selectPointer(action) {
     console.log('action: ', action);
@@ -22,11 +22,13 @@ function* startSelectPointer() {
     }
     const navigateProps = {
         routeName: 'SelectPointer',
-        title: 'Faculties',
-        items: faculties,
+        params: {
+            title: 'Faculties',
+            items: faculties,
+        }
     }
     yield put(actions.startSelectPointer.success(payload));
-    yield put(NavigationActions.navigate(navigateProps));
+    yield call(NavigationService.navigate, navigateProps);
 }
 
 function* loadingSpecialties(action) {

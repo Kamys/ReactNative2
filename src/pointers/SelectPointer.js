@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'native-base';
+import { Container, Content } from 'native-base';
 
 import THeader from "../app/components/THeader";
 import ItemsList from "./components/ItemsList";
@@ -14,12 +14,13 @@ class SelectPointer extends React.Component {
 
     render() {
         const { title, items, selectPointer } = this.props;
-        console.log('SElectPointer this.props: ', this.props);
 
         return (
             <Container>
                 <THeader title={title}/>
-                <ItemsList items={items} onSelectItem={selectPointer}/>
+                <Content>
+                    <ItemsList items={items} onSelectItem={selectPointer}/>
+                </Content>
             </Container>
         );
     }

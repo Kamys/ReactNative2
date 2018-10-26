@@ -10,7 +10,8 @@ class ItemsList extends React.Component {
 
     static defaultProps = {
         items: [],
-        onSelectItem: () => {},
+        onSelectItem: () => {
+        },
     }
 
     onSelect = item => () => {
@@ -24,7 +25,7 @@ class ItemsList extends React.Component {
     render() {
         const { selectedId } = this.state;
         const { items } = this.props;
-        console.log('ItemList items: ', items);
+
         return (
             <List>
                 {
@@ -35,7 +36,7 @@ class ItemsList extends React.Component {
                             selected={selectedId === item.id}
                         >
                             <Left>
-                                <Text>{item.id}</Text>
+                                <Text>{item.label}</Text>
                             </Left>
                             <Right>
                                 <Icon name="arrow-forward"/>
