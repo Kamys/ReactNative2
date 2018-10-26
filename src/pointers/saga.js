@@ -15,11 +15,13 @@ function* selectPointer(action) {
 
 function* startSelectPointer() {
     const faculties = yield call(api.getFaculties);
+    const type = PointerType.FACULTIES;
     const payload = {
-        type: PointerType.FACULTIES,
+        type,
         listPointer: faculties,
     }
     const navigateProps = {
+        key: type,
         routeName: 'SelectPointer',
         params: {
             title: 'Faculties',
@@ -33,12 +35,14 @@ function* startSelectPointer() {
 
 function* loadingSpecialty(action) {
     const specialties = yield call(api.getSpecialty, action.payload.pointer.id);
+    const type = PointerType.SPECIALTIES;
     const payload = {
         pointer: action.pointer,
-        type: PointerType.SPECIALTIES,
+        type,
         listPointer: specialties,
     }
     const navigateProps = {
+        key: type,
         routeName: 'SelectPointer',
         params: {
             title: 'Specialty',

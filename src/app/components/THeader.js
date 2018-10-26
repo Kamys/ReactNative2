@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Left, Right, Body, Icon, Button, Title } from 'native-base';
+import NavigationService from '../navigation/NavigationService';
 
 const THeader = (
 {
@@ -8,7 +9,7 @@ const THeader = (
 (
     <Header>
         <Left>
-            <Button transparent>
+            <Button onPress={() => NavigationService.goBack()} transparent>
                 <Icon name='arrow-back'/>
             </Button>
         </Left>
