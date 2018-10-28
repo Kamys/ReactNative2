@@ -3,8 +3,12 @@ import { createStackNavigator } from 'react-navigation';
 
 import Home from "../screens/Home";
 import SelectPointer from "../../pointers/SelectPointer";
+import TimeHeader from "../../timeHeader";
 
 const screensOptions = {
+    TimeHeader: {
+        screen: TimeHeader,
+    },
     Home: {
         screen: Home
     },

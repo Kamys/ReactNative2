@@ -1,6 +1,7 @@
 import React from "react";
 import { Header, Left, Right, Body, Icon, Button, Title } from 'native-base';
 import NavigationService from '../navigation/NavigationService';
+import { Text } from "react-native";
 
 const THeader = (
 {
@@ -9,17 +10,15 @@ const THeader = (
 (
     <Header>
         <Left>
-            <Button onPress={() => NavigationService.goBack()} transparent>
-                <Icon name='arrow-back'/>
+            <Button transparent>
+                <Icon name='menu'/>
             </Button>
         </Left>
         <Body>
             <Title>{title}</Title>
         </Body>
         <Right>
-            <Button transparent>
-                <Icon name='menu'/>
-            </Button>
+            <Text>Mr. John Smith</Text>
         </Right>
     </Header>
 )
